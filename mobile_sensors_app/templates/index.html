@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="zh">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>陀螺磁强计极性测试</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body>
+    <div class="container">
+        <h1>陀螺磁强计极性测试</h1>
+        
+        <div class="sensor-section">
+            <h2>地球自转角速度在手机三轴分量</h2>
+            <div id="omega-data">
+                <p>X 轴: <span id="omega-x">等待数据...</span> deg/s</p>
+                <p>Y 轴: <span id="omega-y">等待数据...</span> deg/s</p>
+                <p>Z 轴: <span id="omega-z">等待数据...</span> deg/s</p>
+            </div>
+        </div>
+
+        <div class="sensor-section">
+            <h2>地磁场在手机三轴分量</h2>
+            <div id="mag-data">
+                <p>X 轴: <span id="mag-x">等待数据...</span> Gs</p>
+                <p>Y 轴: <span id="mag-y">等待数据...</span> Gs</p>
+                <p>Z 轴: <span id="mag-z">等待数据...</span> Gs</p>
+                <p>磁场总强度: <span id="mag-intensity">等待数据...</span> Gs</p>
+            </div>
+        </div>
+        
+        <div class="sensor-section">
+            <h2>手机坐标系</h2>
+            <div id="phone-axes-visualization" style="text-align: center; margin-top: 20px;">
+                <svg width="200" height="300" viewBox="0 0 200 300" xmlns="http://www.w3.org/2000/svg">
+                    <!-- Phone body -->
+                    <rect x="50" y="50" width="100" height="200" fill="#f0f0f0" stroke="#000" stroke-width="2" rx="15" ry="15" />
+                    <!-- Y-axis (Yaw) -->
+                    <line x1="100" y1="150" x2="100" y2="20" stroke="red" stroke-width="2" marker-end="url(#arrowhead)" />
+                    <text x="105" y="30" fill="red" font-size="12">Y轴</text>
+                    <!-- X-axis (Pitch) -->
+                    <line x1="100" y1="150" x2="180" y2="150" stroke="blue" stroke-width="2" marker-end="url(#arrowhead)" />
+                    <text x="175" y="155" fill="blue" font-size="12">X轴</text>
+                    <!-- Z-axis (Roll) -->
+                    <circle cx="100" cy="150" r="10" stroke="green" stroke-width="2" fill="none" />
+                    <circle cx="100" cy="150" r="4" fill="green" />
+                    <text x="110" y="160" fill="green" font-size="12">Z轴</text>
+                    <!-- Arrowhead marker -->
+                    <defs>
+                        <marker id="arrowhead" markerWidth="10" markerHeight="7" refX="10" refY="3.5" orient="auto">
+                            <polygon points="0 0, 10 3.5, 0 7" fill="black" />
+                        </marker>
+                    </defs>
+                </svg>
+            </div>
+        </div>
+        
+        <div class="sensor-section">
+            <h2>四元数信息</h2>
+            手机坐标系与当地东北天坐标系重合时，手机坐标系的四元数为(0, 0, 0, 1)
+            <div id="quaternion-data">
+                <p>q0: <span id="q0">等待数据...</span></p>
+                <p>q1: <span id="q1">等待数据...</span></p>
+                <p>q2: <span id="q2">等待数据...</span></p>
+                <p>qw: <span id="q3">等待数据...</span></p>
+            </div>
+        </div>
+        
+        <div class="sensor-section">
+            <h2>GNSS位置信息</h2>
+            <div id="location-data">
+                <p>纬度: <span id="latitude">等待数据...</span></p>
+                <p>经度: <span id="longitude">等待数据...</span></p>
+                <p>海拔: <span id="altitude">等待数据...</span></p>
+                <p>精度: <span id="accuracy">等待数据...</span></p>
+                <p>速度: <span id="speed">等待数据...</span></p>
+            </div>
+        </div>
+        <div class="status-message" id="status-message">请允许访问位置和传感器</div>
+    </div>
+
+    <script src="{{ url_for('static', filename='sensors.js') }}"></script>
+</body>
+</html>
