@@ -1,5 +1,4 @@
 import numpy as np
-import matplotlib.pyplot as plt
 import aocs_lab.utils.lib as lib
 from scipy.spatial.transform import Rotation as R
 
