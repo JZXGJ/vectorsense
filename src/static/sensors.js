@@ -1,5 +1,11 @@
 document.addEventListener('DOMContentLoaded', function() {
     const statusMessage = document.getElementById('status-message');
+
+    // Keep numeric rendering width stable by always reserving sign position.
+    function formatSignedNumber(value, digits) {
+        const sign = value >= 0 ? '+' : '';
+        return sign + value.toFixed(digits);
+    }
     
     // Check if the browser supports the required APIs
     if (!navigator.geolocation) {
@@ -36,19 +42,19 @@ document.addEventListener('DOMContentLoaded', function() {
     
     // Update location data in the UI
     function updateLocationData(position) {
-        document.getElementById('latitude').textContent = position.coords.latitude.toFixed(6);
-        document.getElementById('longitude').textContent = position.coords.longitude.toFixed(6);
-        document.getElementById('accuracy').textContent = position.coords.accuracy.toFixed(2) + ' 米';
+        document.getElementById('latitude').textContent = formatSignedNumber(position.coords.latitude, 6);
+        document.getElementById('longitude').textContent = formatSignedNumber(position.coords.longitude, 6);
+        document.getElementById('accuracy').textContent = formatSignedNumber(position.coords.accuracy, 2) + ' 米';
         
         // Some devices might not provide altitude or speed
         if (position.coords.altitude !== null) {
-            document.getElementById('altitude').textContent = position.coords.altitude.toFixed(2) + ' 米';
+            document.getElementById('altitude').textContent = formatSignedNumber(position.coords.altitude, 2) + ' 米';
         } else {
             document.getElementById('altitude').textContent = '不可用';
         }
         
         if (position.coords.speed !== null) {
-            document.getElementById('speed').textContent = position.coords.speed.toFixed(2) + ' 米/秒';
+            document.getElementById('speed').textContent = formatSignedNumber(position.coords.speed, 2) + ' 米/秒';
         } else {
             document.getElementById('speed').textContent = '不可用';
         }
@@ -90,10 +96,10 @@ document.addEventListener('DOMContentLoaded', function() {
                     const quaternion = sensor.quaternion;
 
                     // Display quaternion values
-                    document.getElementById('q0').textContent = quaternion[0].toFixed(4);
-                    document.getElementById('q1').textContent = quaternion[1].toFixed(4);
-                    document.getElementById('q2').textContent = quaternion[2].toFixed(4);
-                    document.getElementById('q3').textContent = quaternion[3].toFixed(4);
+                    document.getElementById('q0').textContent = formatSignedNumber(quaternion[0], 4);
+                    document.getElementById('q1').textContent = formatSignedNumber(quaternion[1], 4);
+                    document.getElementById('q2').textContent = formatSignedNumber(quaternion[2], 4);
+                    document.getElementById('q3').textContent = formatSignedNumber(quaternion[3], 4);
                 });
                 sensor.addEventListener('error', (event) => {
                     console.error('Sensor error:', event.error.name);
@@ -218,9 +224,9 @@ document.addEventListener('DOMContentLoaded', function() {
         .then(data => {
             console.log('API response:', data);
             const omega_B = data.omega_B;
-            document.getElementById('omega-x').textContent = omega_B[0].toFixed(4);
-            document.getElementById('omega-y').textContent = omega_B[1].toFixed(4);
-            document.getElementById('omega-z').textContent = omega_B[2].toFixed(4);
+            document.getElementById('omega-x').textContent = formatSignedNumber(omega_B[0], 4);
+            document.getElementById('omega-y').textContent = formatSignedNumber(omega_B[1], 4);
+            document.getElementById('omega-z').textContent = formatSignedNumber(omega_B[2], 4);
         })
         .catch(error => {
             console.error('Error fetching earth rotation data:', error);
@@ -272,9 +278,9 @@ document.addEventListener('DOMContentLoaded', function() {
             const mag_B = data.mag_B;
             
             // 显示磁场分量
-            document.getElementById('mag-x').textContent = mag_B[0].toFixed(2);
-            document.getElementById('mag-y').textContent = mag_B[1].toFixed(2);
-            document.getElementById('mag-z').textContent = mag_B[2].toFixed(2);
+            document.getElementById('mag-x').textContent = formatSignedNumber(mag_B[0], 2);
+            document.getElementById('mag-y').textContent = formatSignedNumber(mag_B[1], 2);
+            document.getElementById('mag-z').textContent = formatSignedNumber(mag_B[2], 2);
             
             // 计算并显示磁场总强度
             const intensity = Math.sqrt(
@@ -282,7 +288,7 @@ document.addEventListener('DOMContentLoaded', function() {
                 mag_B[1] * mag_B[1] + 
                 mag_B[2] * mag_B[2]
             );
-            document.getElementById('mag-intensity').textContent = intensity.toFixed(2);
+            document.getElementById('mag-intensity').textContent = formatSignedNumber(intensity, 2);
         })
         .catch(error => {
             console.error('获取磁场数据时出错:', error);
@@ -290,8 +296,8 @@ document.addEventListener('DOMContentLoaded', function() {
     }
 
     // Automatically execute fetchEarthRotation every second
-    setInterval(fetchEarthRotation, 1000);
+    setInterval(fetchEarthRotation, 100);
 
     // Automatically execute fetchMagneticField every second
-    setInterval(fetchMagneticField, 1000);
+    setInterval(fetchMagneticField, 100);
 });

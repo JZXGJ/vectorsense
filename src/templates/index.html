@@ -13,19 +13,60 @@
         <div class="sensor-section">
             <h2>地球自转角速度在手机三轴分量</h2>
             <div id="omega-data">
-                <p>X 轴: <span id="omega-x">等待数据...</span> deg/s</p>
-                <p>Y 轴: <span id="omega-y">等待数据...</span> deg/s</p>
-                <p>Z 轴: <span id="omega-z">等待数据...</span> deg/s</p>
+                <table class="sensor-table">
+                    <thead>
+                        <tr>
+                            <th>数值含义</th>
+                            <th>数值</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>X 轴角速度 (deg/s)</td>
+                            <td class="value-cell"><span id="omega-x">等待数据...</span></td>
+                        </tr>
+                        <tr>
+                            <td>Y 轴角速度 (deg/s)</td>
+                            <td class="value-cell"><span id="omega-y">等待数据...</span></td>
+                        </tr>
+                        <tr>
+                            <td>Z 轴角速度 (deg/s)</td>
+                            <td class="value-cell"><span id="omega-z">等待数据...</span></td>
+                        </tr>
+                    </tbody>
+                </table>
             </div>
         </div>
 
         <div class="sensor-section">
             <h2>地磁场在手机三轴分量</h2>
             <div id="mag-data">
-                <p>X 轴: <span id="mag-x">等待数据...</span> Gs</p>
-                <p>Y 轴: <span id="mag-y">等待数据...</span> Gs</p>
-                <p>Z 轴: <span id="mag-z">等待数据...</span> Gs</p>
-                <p>磁场总强度: <span id="mag-intensity">等待数据...</span> Gs</p>
+                <table class="sensor-table">
+                    <thead>
+                        <tr>
+                            <th>数值含义</th>
+                            <th>数值</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>X 轴磁场分量 (Gs)</td>
+                            <td class="value-cell"><span id="mag-x">等待数据...</span></td>
+                        </tr>
+                        <tr>
+                            <td>Y 轴磁场分量 (Gs)</td>
+                            <td class="value-cell"><span id="mag-y">等待数据...</span></td>
+                        </tr>
+                        <tr>
+                            <td>Z 轴磁场分量 (Gs)</td>
+                            <td class="value-cell"><span id="mag-z">等待数据...</span></td>
+                        </tr>
+                        <tr>
+                            <td>磁场总强度 (Gs)</td>
+                            <td class="value-cell"><span id="mag-intensity">等待数据...</span></td>
+                        </tr>
+                    </tbody>
+                </table>
             </div>
         </div>
         
@@ -59,21 +100,68 @@
             <h2>四元数信息</h2>
             手机坐标系与当地东北天坐标系重合时，手机坐标系的四元数为(0, 0, 0, 1)
             <div id="quaternion-data">
-                <p>q0: <span id="q0">等待数据...</span></p>
-                <p>q1: <span id="q1">等待数据...</span></p>
-                <p>q2: <span id="q2">等待数据...</span></p>
-                <p>qw: <span id="q3">等待数据...</span></p>
+                <table class="sensor-table">
+                    <thead>
+                        <tr>
+                            <th>数值含义</th>
+                            <th>数值</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>q0</td>
+                            <td class="value-cell"><span id="q0">等待数据...</span></td>
+                        </tr>
+                        <tr>
+                            <td>q1</td>
+                            <td class="value-cell"><span id="q1">等待数据...</span></td>
+                        </tr>
+                        <tr>
+                            <td>q2</td>
+                            <td class="value-cell"><span id="q2">等待数据...</span></td>
+                        </tr>
+                        <tr>
+                            <td>qw</td>
+                            <td class="value-cell"><span id="q3">等待数据...</span></td>
+                        </tr>
+                    </tbody>
+                </table>
             </div>
         </div>
         
         <div class="sensor-section">
             <h2>GNSS位置信息</h2>
             <div id="location-data">
-                <p>纬度: <span id="latitude">等待数据...</span></p>
-                <p>经度: <span id="longitude">等待数据...</span></p>
-                <p>海拔: <span id="altitude">等待数据...</span></p>
-                <p>精度: <span id="accuracy">等待数据...</span></p>
-                <p>速度: <span id="speed">等待数据...</span></p>
+                <table class="sensor-table">
+                    <thead>
+                        <tr>
+                            <th>数值含义</th>
+                            <th>数值</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>纬度</td>
+                            <td class="value-cell"><span id="latitude">等待数据...</span></td>
+                        </tr>
+                        <tr>
+                            <td>经度</td>
+                            <td class="value-cell"><span id="longitude">等待数据...</span></td>
+                        </tr>
+                        <tr>
+                            <td>海拔 (米)</td>
+                            <td class="value-cell"><span id="altitude">等待数据...</span></td>
+                        </tr>
+                        <tr>
+                            <td>精度 (米)</td>
+                            <td class="value-cell"><span id="accuracy">等待数据...</span></td>
+                        </tr>
+                        <tr>
+                            <td>速度 (米/秒)</td>
+                            <td class="value-cell"><span id="speed">等待数据...</span></td>
+                        </tr>
+                    </tbody>
+                </table>
             </div>
         </div>
         <div class="status-message" id="status-message">请允许访问位置和传感器</div>
