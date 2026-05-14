@@ -1,5 +1,4 @@
 flask
 numpy
 scipy
-pyOpenSSL
 aocs_lab

@@ -1,18 +1,13 @@
 # 极性测试工具
 
+本工具通过手机姿态和位置，获取角速度和磁场的理论值，可用来辅助卫星测试
+
 ## 快速启动（手动）
 
 ```
 cd /root/orientation
 . .venv/bin/activate
 python src/app.py
-```
-
-## 后台运行（nohup）
-
-```
-cd /root/orientation
-nohup .venv/bin/python src/app.py > service.log 2>&1 &
 ```
 
 ## PM2 管理（可选）
